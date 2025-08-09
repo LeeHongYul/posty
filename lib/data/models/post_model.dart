@@ -6,8 +6,8 @@ part 'post_model.g.dart';
 @freezed
 class PostModel with _$PostModel {
   const factory PostModel({
-    @Default('') String userId,
-    @Default('') String id,
+    @Default(0) int userId,
+    @Default(0) int id,
     @Default('') String title,
     @Default('') String body,
   }) = _PostModel;

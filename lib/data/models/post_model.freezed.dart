@@ -20,8 +20,8 @@ PostModel _$PostModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PostModel {
-  String get userId => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
+  int get userId => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
 
@@ -40,7 +40,7 @@ abstract class $PostModelCopyWith<$Res> {
   factory $PostModelCopyWith(PostModel value, $Res Function(PostModel) then) =
       _$PostModelCopyWithImpl<$Res, PostModel>;
   @useResult
-  $Res call({String userId, String id, String title, String body});
+  $Res call({int userId, int id, String title, String body});
 }
 
 /// @nodoc
@@ -67,11 +67,11 @@ class _$PostModelCopyWithImpl<$Res, $Val extends PostModel>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -92,7 +92,7 @@ abstract class _$$PostModelImplCopyWith<$Res>
       __$$PostModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userId, String id, String title, String body});
+  $Res call({int userId, int id, String title, String body});
 }
 
 /// @nodoc
@@ -117,11 +117,11 @@ class __$$PostModelImplCopyWithImpl<$Res>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -138,17 +138,17 @@ class __$$PostModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PostModelImpl implements _PostModel {
   const _$PostModelImpl(
-      {this.userId = '', this.id = '', this.title = '', this.body = ''});
+      {this.userId = 0, this.id = 0, this.title = '', this.body = ''});
 
   factory _$PostModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$PostModelImplFromJson(json);
 
   @override
   @JsonKey()
-  final String userId;
+  final int userId;
   @override
   @JsonKey()
-  final String id;
+  final int id;
   @override
   @JsonKey()
   final String title;
@@ -194,8 +194,8 @@ class _$PostModelImpl implements _PostModel {
 
 abstract class _PostModel implements PostModel {
   const factory _PostModel(
-      {final String userId,
-      final String id,
+      {final int userId,
+      final int id,
       final String title,
       final String body}) = _$PostModelImpl;
 
@@ -203,9 +203,9 @@ abstract class _PostModel implements PostModel {
       _$PostModelImpl.fromJson;
 
   @override
-  String get userId;
+  int get userId;
   @override
-  String get id;
+  int get id;
   @override
   String get title;
   @override

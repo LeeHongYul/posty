@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:posty/core/models/post_model.dart';
+import 'package:posty/data/models/post_model.dart';
 
 part 'post_list_model.freezed.dart';
 part 'post_list_model.g.dart';
