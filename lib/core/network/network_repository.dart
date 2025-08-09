@@ -2,7 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final dioProvider = Provider<Dio>((ref) {
-  return Dio(BaseOptions(baseUrl: 'https://jsonplaceholder.typicode.com'));
+  return Dio(BaseOptions(
+    baseUrl: 'https://jsonplaceholder.typicode.com',
+  ));
 });
 
 abstract class NetWorkRepository {
@@ -19,6 +21,7 @@ class NetWorkRepositoryImpl implements NetWorkRepository {
       {required String url, Map<String, dynamic>? params}) async {
     try {
       final response = await _dio.get(url, queryParameters: params);
+
       if (response.statusCode == 200) {
         return response.data;
       } else {
