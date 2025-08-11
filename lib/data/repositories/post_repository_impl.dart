@@ -1,18 +1,17 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../domain/entities/post_entities.dart';
 import '../../domain/repositories/post_repository.dart';
 import '../models/post_model.dart';
 import '../mappers/post_mapper.dart';
-import '../../../core/network/network_repository.dart';
+import '../datasources/network_datasource.dart';
 
 class PostRepositoryImpl implements PostRepository {
-  final NetWorkRepository network;
+  final NetworkDataSource _networkDataSource;
 
-  PostRepositoryImpl(this.network);
+  const PostRepositoryImpl(this._networkDataSource);
 
   @override
   Future<List<PostEntities>> getPostList() async {
-    final data = await network.getResponse(url: '/posts');
+    final data = await _networkDataSource.getResponse(url: '/posts');
     final list = data as List<dynamic>;
     final postModels =
         list.map((e) => PostModel.fromJson(e as Map<String, dynamic>)).toList();
@@ -21,13 +20,8 @@ class PostRepositoryImpl implements PostRepository {
 
   @override
   Future<PostEntities> getPostDetail(int id) async {
-    final data = await network.getResponse(url: '/posts/$id');
+    final data = await _networkDataSource.getResponse(url: '/posts/$id');
     final postModel = PostModel.fromJson(data as Map<String, dynamic>);
     return PostMapper.toEntity(postModel);
   }
 }
-
-final postRepositoryProvider = Provider<PostRepository>((ref) {
-  final network = ref.read(netWorkManagerProvider);
-  return PostRepositoryImpl(network);
-});
