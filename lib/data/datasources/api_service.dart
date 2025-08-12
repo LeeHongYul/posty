@@ -3,7 +3,7 @@ import 'package:retrofit/retrofit.dart';
 
 part 'api_service.g.dart';
 
-@RestApi()
+@RestApi(baseUrl: "https://jsonplaceholder.typicode.com")
 abstract class ApiService {
   factory ApiService(Dio dio) = _ApiService;
 
