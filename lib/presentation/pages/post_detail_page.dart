@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/di/injection.dart';
+import '../../core/di/book_mark_providers.dart';
 
 class PostDetailPage extends ConsumerStatefulWidget {
   final int postId;
@@ -19,6 +20,9 @@ class _PostDetailPageState extends ConsumerState<PostDetailPage> {
       ref
           .read(postDetailNotifierProvider(widget.postId).notifier)
           .loadPost(widget.postId);
+
+      // 북마크 목록 로드
+      ref.read(bookMarkNotifierProvider.notifier).loadBookMarks();
     });
   }
 
@@ -26,11 +30,30 @@ class _PostDetailPageState extends ConsumerState<PostDetailPage> {
   Widget build(BuildContext context) {
     final postDetailState =
         ref.watch(postDetailNotifierProvider(widget.postId));
+    final bookMarkState = ref.watch(bookMarkNotifierProvider);
 
     return Scaffold(
       appBar: AppBar(
         title: Text('게시물 상세 (${widget.postId})'),
         actions: [
+          // 북마크 버튼
+          Consumer(
+            builder: (context, ref, child) {
+              final isBookMarked = bookMarkState.idList.contains(widget.postId);
+              return IconButton(
+                icon: Icon(
+                  isBookMarked ? Icons.bookmark : Icons.bookmark_border,
+                  color: isBookMarked ? Colors.amber : null,
+                ),
+                onPressed: () {
+                  ref
+                      .read(bookMarkNotifierProvider.notifier)
+                      .toggleBookMark(widget.postId);
+                },
+                tooltip: isBookMarked ? '북마크 제거' : '북마크 추가',
+              );
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: () {
