@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../domain/usecases/get_post_list_usecase.dart';
-import '../../domain/usecases/get_post_detail_usecase.dart';
+import '../../domain/usecases/post_usecase/get_post_list_usecase.dart';
+import '../../domain/usecases/post_usecase/get_post_detail_usecase.dart';
 import 'data_providers.dart';
 
 final getPostListUseCaseProvider = Provider<GetPostListUseCase>((ref) {

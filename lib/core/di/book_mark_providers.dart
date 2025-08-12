@@ -2,8 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../data/datasources/book_mark_local_datasource.dart';
 import '../../data/repositories/book_mark_repository_impl.dart';
 import '../../domain/repositories/book_mark_repository.dart';
-import '../../domain/usecases/get_book_marks_usecase.dart';
-import '../../domain/usecases/toggle_book_mark_usecase.dart';
+import '../../domain/usecases/book_mark_usecase/get_book_marks_usecase.dart';
+import '../../domain/usecases/book_mark_usecase/toggle_book_mark_usecase.dart';
 import '../../presentation/notifiers/book_mark_notifier.dart';
 import '../../presentation/state/book_mark_state.dart';
 

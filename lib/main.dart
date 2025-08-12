@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:posty/presentation/pages/audio_upload_page.dart';
 import 'package:posty/presentation/pages/post_detail_page.dart';
 import 'package:posty/presentation/pages/post_list_page.dart';
 import 'package:posty/presentation/pages/book_mark_page.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Post App',
       initialRoute: '/',
+      home: AudioUploadPage(),
       onGenerateRoute: (settings) {
         if (settings.name == '/') {
           return MaterialPageRoute(builder: (_) => const PostListPage());
