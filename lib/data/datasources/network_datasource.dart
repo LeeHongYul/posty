@@ -1,30 +1,32 @@
 import 'package:dio/dio.dart';
+import 'api_service.dart';
 
 abstract class NetworkDataSource {
-  Future<dynamic> getResponse({
-    required String url,
-    Map<String, dynamic>? params,
-  });
+  Future<List<dynamic>> getPosts();
+  Future<dynamic> getPost(int id);
 }
 
 class NetworkDataSourceImpl implements NetworkDataSource {
-  final Dio _dio;
+  final ApiService _apiService;
 
-  const NetworkDataSourceImpl(this._dio);
+  const NetworkDataSourceImpl(this._apiService);
 
   @override
-  Future<dynamic> getResponse({
-    required String url,
-    Map<String, dynamic>? params,
-  }) async {
+  Future<List<dynamic>> getPosts() async {
     try {
-      final response = await _dio.get(url, queryParameters: params);
+      final data = await _apiService.getPosts();
+      return data as List<dynamic>;
+    } on DioException catch (e) {
+      throw Exception('Dio 에러: ${e.message}');
+    } catch (e) {
+      throw Exception('알 수 없는 에러: $e');
+    }
+  }
 
-      if (response.statusCode == 200) {
-        return response.data;
-      } else {
-        throw Exception('네트워크 에러: ${response.statusCode}');
-      }
+  @override
+  Future<dynamic> getPost(int id) async {
+    try {
+      return await _apiService.getPost(id);
     } on DioException catch (e) {
       throw Exception('Dio 에러: ${e.message}');
     } catch (e) {

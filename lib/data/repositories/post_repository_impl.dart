@@ -11,16 +11,15 @@ class PostRepositoryImpl implements PostRepository {
 
   @override
   Future<List<PostEntities>> getPostList() async {
-    final data = await _networkDataSource.getResponse(url: '/posts');
-    final list = data as List<dynamic>;
+    final data = await _networkDataSource.getPosts();
     final postModels =
-        list.map((e) => PostModel.fromJson(e as Map<String, dynamic>)).toList();
+        data.map((e) => PostModel.fromJson(e as Map<String, dynamic>)).toList();
     return PostMapper.toEntityList(postModels);
   }
 
   @override
   Future<PostEntities> getPostDetail(int id) async {
-    final data = await _networkDataSource.getResponse(url: '/posts/$id');
+    final data = await _networkDataSource.getPost(id);
     final postModel = PostModel.fromJson(data as Map<String, dynamic>);
     return PostMapper.toEntity(postModel);
   }
