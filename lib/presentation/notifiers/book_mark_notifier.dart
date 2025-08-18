@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../domain/entities/book_mark_entity.dart';
-import '../../domain/usecases/get_book_marks_usecase.dart';
-import '../../domain/usecases/toggle_book_mark_usecase.dart';
+import 'package:posty/domain/usecases/book_mark_usecase/get_book_marks_usecase.dart';
+import 'package:posty/domain/usecases/book_mark_usecase/toggle_book_mark_usecase.dart';
 import '../state/book_mark_state.dart';
 
 class BookMarkNotifier extends StateNotifier<BookMarkListState> {

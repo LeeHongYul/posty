@@ -1,5 +1,5 @@
-import '../entities/book_mark_entity.dart';
-import '../repositories/book_mark_repository.dart';
+import 'package:posty/domain/entities/book_mark_entity.dart';
+import 'package:posty/domain/repositories/book_mark_repository.dart';
 
 class GetBookMarksUseCase {
   final BookMarkRepository repository;

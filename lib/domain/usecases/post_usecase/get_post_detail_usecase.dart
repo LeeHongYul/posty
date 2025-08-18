@@ -1,5 +1,5 @@
-import '../entities/post_entities.dart';
-import '../repositories/post_repository.dart';
+import 'package:posty/domain/entities/post_entities.dart';
+import 'package:posty/domain/repositories/post_repository.dart';
 
 class GetPostDetailUseCase {
   final PostRepository _repository;

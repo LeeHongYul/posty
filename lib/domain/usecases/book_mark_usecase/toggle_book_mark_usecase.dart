@@ -1,4 +1,4 @@
-import '../repositories/book_mark_repository.dart';
+import 'package:posty/domain/repositories/book_mark_repository.dart';
 
 class ToggleBookMarkUseCase {
   final BookMarkRepository repository;
